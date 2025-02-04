@@ -1,4 +1,4 @@
-from interface import Interface
+from src.interface_usuario import Interface
 from livraria import Livraria
 
 if __name__ == '__main__':
