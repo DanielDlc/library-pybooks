@@ -1,16 +1,11 @@
-from livro import Livro
+class LivroDigital:
+    def __init__(self, titulo, autor, formato, tamanho, imagem=None, link=None, **kwargs):
+        self.titulo = titulo
+        self.autor = autor
+        self.formato = formato
+        self.tamanho = tamanho
+        self.imagem = imagem if imagem else "img/digitais/default.jpg"  # Imagem padrão
+        self.link = link if link else "#"  # Link padrão
 
-
-class LivroDigital(Livro):
-    def __init__(self, titulo, autor, **kwargs):
-        super() .__init__(titulo, autor)
-        self.genero = kwargs.get("genero")
-        self.ano = kwargs.get("ano")
-        self.formato = kwargs.get("formato", "PDF")
-        self.tamanho = kwargs.get("tamanho", 0)
-
-    def exibir_detalhes(self):
-        detalhes = super().exibir_detalhes()
-        detalhes += f'\nFormato: {self.formato}'
-        detalhes += f'\nTamanho: {self.tamanho} MB'
-        return detalhes
+    def __str__(self):
+        return f"{self.titulo} - {self.autor} ({self.formato}, {self.tamanho}MB)"
