@@ -1,50 +1,54 @@
 [
     {
-        "titulo": "Python Fluente",
-        "autor": "Luciano Ramalho",
-        "genero": null,
-        "ano": null,
-        "localizacao": null,
-        "condicao": "novo"
-    },
-    {
         "titulo": "Data Structures & Algorithms in Python",
         "autor": "Michael T. Goodrich",
-        "genero": null,
-        "ano": null,
         "formato": "PDF",
-        "tamanho": 0
+        "tamanho": 0,
+        "imagem": "img/digitais/data_structures_python.jpg",
+        "link": "https://example.com/data_structures.pdf"
     },
     {
         "titulo": "Data Structure and Algorithmic Thinking with Python",
         "autor": "Narasimha Karumanchi",
-        "genero": null,
-        "ano": null,
         "formato": "PDF",
-        "tamanho": 69.9
-    },
-    {
-        "titulo": "TDD com Python",
-        "autor": "Harry J.W. Percival",
-        "genero": null,
-        "ano": null,
-        "localizacao": null,
-        "condicao": "novo"
-    },
-    {
-        "titulo": "Automatize Taredas Maçantes com Python",
-        "autor": "Ai Swigart",
-        "genero": null,
-        "ano": null,
-        "localizacao": null,
-        "condicao": "novo"
+        "tamanho": 69.9,
+        "imagem": "img/digitais/data_structure_thinking.jpg",
+        "link": "https://example.com/data_structure.pdf"
     },
     {
         "titulo": "Clean Code in Python",
         "autor": "Mariano Anaya",
+        "formato": "PDF",
+        "tamanho": 2.81,
+        "imagem": "img/digitais/clean_code_python.jpg",
+        "link": "https://example.com/clean_code.pdf"
+    },
+    {
+        "localizacao": "Sala",
+        "condicao": "Novo",
+        "titulo": "Python Cookbook",
+        "autor": "David Beazley, Brian K. Jones",
         "genero": null,
         "ano": null,
+        "imagem": "img/default.jpg",
+        "link": null
+    },
+    {
+        "titulo": "Web Scraping with Python, 3rd Edition",
+        "autor": "Ryan Mitchell",
         "formato": "PDF",
-        "tamanho": 2.81
+        "tamanho": 22.0,
+        "imagem": "img/digitais/Web Scraping.png",
+        "link": "https://www.oreilly.com/library/view/web-scraping-with/9781098145347/"
+    },
+    {
+        "localizacao": "Sala",
+        "condicao": "Novo",
+        "titulo": "Python Fluente",
+        "autor": "Luciano Ramalho",
+        "genero": null,
+        "ano": null,
+        "imagem": "img/default.jpg",
+        "link": null
     }
 ]
