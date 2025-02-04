@@ -1,0 +1,62 @@
+[
+    {
+        "titulo": "Data Structures & Algorithms in Python",
+        "autor": "Michael T. Goodrich",
+        "formato": "PDF",
+        "tamanho": 0,
+        "imagem": "img/digitais/data_structures_python.jpg",
+        "link": "https://example.com/data_structures.pdf",
+        "localizacao": null,
+        "condicao": null
+    },
+    {
+        "titulo": "Data Structure and Algorithmic Thinking with Python",
+        "autor": "Narasimha Karumanchi",
+        "formato": "PDF",
+        "tamanho": 69.9,
+        "imagem": "img/digitais/data_structure_thinking.jpg",
+        "link": "https://example.com/data_structure.pdf",
+        "localizacao": null,
+        "condicao": null
+    },
+    {
+        "titulo": "Clean Code in Python",
+        "autor": "Mariano Anaya",
+        "formato": "PDF",
+        "tamanho": 2.81,
+        "imagem": "img/digitais/clean_code_python.jpg",
+        "link": "https://example.com/clean_code.pdf",
+        "localizacao": null,
+        "condicao": null
+    },
+    {
+        "titulo": "Python Cookbook",
+        "autor": "David Beazley, Brian K. Jones",
+        "formato": null,
+        "tamanho": null,
+        "imagem": "img/fisicos/python_cookbook.jpg",
+        "link": null,
+        "localizacao": "Sala",
+        "condicao": "Novo"
+    },
+    {
+        "titulo": "Web Scraping with Python, 3rd Edition",
+        "autor": "Ryan Mitchell",
+        "formato": "PDF",
+        "tamanho": 22.0,
+        "imagem": "img/digitais/web_scraping_python.jpg",
+        "link": "https://www.oreilly.com/library/view/web-scraping-with/9781098145347/",
+        "localizacao": null,
+        "condicao": null
+    },
+    {
+        "titulo": "Python Fluente",
+        "autor": "Luciano Ramalho",
+        "formato": null,
+        "tamanho": null,
+        "imagem": "img/fisicos/python_fluente.jpg",
+        "link": null,
+        "localizacao": "Sala",
+        "condicao": "Novo"
+    }
+]
