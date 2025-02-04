@@ -1,0 +1,21 @@
+[tool.ruff]
+# Definir limite de caracteres por linha
+line-length = 79
+# Excluir diretórios específicos (exemplo: migrações do Django)
+extend-exclude = ["migrations"]
+
+[tool.ruff.lint]
+# Habilita regras de linting avançadas
+preview = true
+# Seleciona os linters que serão aplicados
+select = ["I", "F", "E", "W", "PL", "PT"]
+
+[tool.ruff.format]
+# Ativa o formatador
+preview = true
+# Define o estilo de aspas (pode ser 'single' ou 'double')
+quote-style = "single"
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+testpaths = ["tests"]
