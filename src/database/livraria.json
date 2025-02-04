@@ -1,0 +1,22 @@
+[
+    {
+        "localizacao": "Sala",
+        "condicao": "Novo",
+        "titulo": "Python fluente",
+        "autor": "Luciano Ramalho",
+        "genero": null,
+        "ano": null,
+        "imagem": "img/default.jpg",
+        "link": null
+    },
+    {
+        "titulo": "Web Scraping",
+        "autor": "Ryan Mitchell (Author)",
+        "genero": null,
+        "ano": null,
+        "imagem": "img/default.jpg",
+        "link": "https://www.amazon.com/-/es/Web-Scraping-Python-Extraction-Modern-dp-1098145356/dp/1098145356",
+        "formato": "PDF",
+        "tamanho": 22.0
+    }
+]
