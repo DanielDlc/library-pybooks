@@ -1,0 +1,22 @@
+[
+    {
+        "titulo": "Effective Python",
+        "autor": "Brett Slatkin",
+        "formato": null,
+        "tamanho": null,
+        "imagem": "img/fisicos/effective_python.jpg",
+        "link": null,
+        "localizacao": "Escritório",
+        "condicao": "Novo"
+    },
+    {
+        "titulo": "Fluent Python",
+        "autor": "Luciano Ramalho",
+        "formato": "PDF",
+        "tamanho": 10.5,
+        "imagem": "img/digitais/fluent_python.jpg",
+        "link": "https://example.com/fluent_python.pdf",
+        "localizacao": null,
+        "condicao": null
+    }
+]
