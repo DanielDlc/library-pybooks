@@ -1,102 +1,111 @@
-"""Módulo que define o formulário para adicionar livros."""
-
 import tkinter as tk
-from tkinter import messagebox, simpledialog
-from src.managers.livro_manager import LivroManager
+from tkinter import Frame, Label, Radiobutton, StringVar, Entry, Button
 
-class LivroForm:
-    """Formulário para adicionar livros."""
+
+class LivroForm(tk.Frame):
+    """
+    Formulário para adicionar livros na biblioteca.
+    """
 
     def __init__(self, master, livro_manager, livro_list):
-        """Cria o formulário na interface.
-
-        :param master: O widget pai.
-        :param livro_manager: O gerenciador de livros.
-        :param livro_list: O widget da lista de livros.
-        """
+        super().__init__(master)
         self.livro_manager = livro_manager
         self.livro_list = livro_list
+        self.pack(padx=10, pady=10)  # Mudando para 'pack()' ao invés de 'grid()' na raiz
 
-        self.frame = tk.Frame(master)
-        self.frame.pack(pady=10)
+        self.create_widgets()
 
-        # Campos de entrada
-        tk.Label(self.frame, text='Título:').grid(row=0, column=0, padx=5, pady=5)
-        self.entry_titulo = tk.Entry(self.frame, width=50)
-        self.entry_titulo.grid(row=0, column=1)
+    def create_widgets(self):
+        """
+        Cria os widgets da interface gráfica.
+        """
 
-        tk.Label(self.frame, text='Autor:').grid(row=1, column=0, padx=5, pady=5)
-        self.entry_autor = tk.Entry(self.frame, width=50)
-        self.entry_autor.grid(row=1, column=1)
+        # Título
+        Label(self, text="Título:").grid(row=0, column=0, sticky="e", padx=5, pady=5)
+        self.titulo_entry = Entry(self, width=40)
+        self.titulo_entry.grid(row=0, column=1, padx=5, pady=5)
 
-        tk.Label(self.frame, text='Tipo:').grid(row=2, column=0, padx=5, pady=5)
-        self.tipo_var = tk.StringVar(value="fisico")
-        tk.Radiobutton(self.frame, text='📖 Físico', variable=self.tipo_var, value='fisico', command=self.alterar_campos).grid(row=2, column=1)
-        tk.Radiobutton(self.frame, text='💻 Digital', variable=self.tipo_var, value='digital', command=self.alterar_campos).grid(row=2, column=2)
+        # Autor
+        Label(self, text="Autor:").grid(row=1, column=0, sticky="e", padx=5, pady=5)
+        self.autor_entry = Entry(self, width=40)
+        self.autor_entry.grid(row=1, column=1, padx=5, pady=5)
 
-        # Campo de localização/tamanho
-        self.label_extra = tk.Label(self.frame, text="Localização:")
-        self.label_extra.grid(row=3, column=0, padx=5, pady=5)
-        self.entry_extra = tk.Entry(self.frame, width=50)
-        self.entry_extra.grid(row=3, column=1)
+        # Tipo do livro (Físico/Digital)
+        Label(self, text="Tipo:").grid(row=2, column=0, sticky="e", padx=5, pady=5)
 
-        # Campo de link
-        tk.Label(self.frame, text='🔗 Link:').grid(row=4, column=0, padx=5, pady=5)
-        self.entry_link = tk.Entry(self.frame, width=50)
-        self.entry_link.grid(row=4, column=1)
+        # Criando um Frame para os botões de tipo de livro
+        frame_tipo = Frame(self)
+        frame_tipo.grid(row=2, column=1, padx=5, pady=5, sticky="w")
 
-        # Botão de adicionar livro
-        self.botao_adicionar = tk.Button(self.frame, text="Adicionar Livro", command=self.adicionar_livro)
-        self.botao_adicionar.grid(row=5, column=0, columnspan=2, pady=10)
+        # Variável para armazenar a seleção do tipo
+        self.tipo_var = StringVar(value="fisico")
 
-        self.alterar_campos()
+        # Radiobutton para Livro Físico
+        self.radio_fisico = Radiobutton(
+            frame_tipo, text="📖 Físico", variable=self.tipo_var, value="fisico"
+        )
+        self.radio_fisico.grid(row=0, column=0, padx=(0, 5))  # Mantendo os botões juntos
 
-    def alterar_campos(self):
-        """Altera os campos de entrada conforme o tipo de livro."""
-        tipo = self.tipo_var.get()
-        if tipo == "fisico":
-            self.label_extra.config(text="Localização:")
-        else:
-            self.label_extra.config(text="Tamanho (MB):")
+        # Radiobutton para Livro Digital
+        self.radio_digital = Radiobutton(
+            frame_tipo, text="💻 Digital", variable=self.tipo_var, value="digital"
+        )
+        self.radio_digital.grid(row=0, column=1, padx=(5, 0))  # Mantendo alinhamento
+
+        # Campo para localização (Aparece para livros físicos)
+        Label(self, text="Localização:").grid(row=3, column=0, sticky="e", padx=5, pady=5)
+        self.localizacao_entry = Entry(self, width=40)
+        self.localizacao_entry.grid(row=3, column=1, padx=5, pady=5)
+
+        # Campo para o link (Para livros digitais ou referência de livros físicos)
+        Label(self, text="🔗 Link:").grid(row=4, column=0, sticky="e", padx=5, pady=5)
+        self.link_entry = Entry(self, width=40)
+        self.link_entry.grid(row=4, column=1, padx=5, pady=5)
+
+        # Botão para adicionar livro
+        self.add_button = Button(self, text="Adicionar Livro", command=self.adicionar_livro)
+        self.add_button.grid(row=5, column=1, pady=10)
 
     def adicionar_livro(self):
-        """Adiciona um novo livro à livraria."""
-        titulo = self.entry_titulo.get().strip()
-        autor = self.entry_autor.get().strip()
+        """
+        Adiciona um novo livro à biblioteca.
+        """
+
+        titulo = self.titulo_entry.get().strip()
+        autor = self.autor_entry.get().strip()
         tipo = self.tipo_var.get()
-        extra = self.entry_extra.get().strip()
-        link = self.entry_link.get().strip()
+        localizacao = self.localizacao_entry.get().strip()
+        link = self.link_entry.get().strip()
 
         if not titulo or not autor:
-            messagebox.showerror("Erro", "Preencha os campos Título e Autor!")
+            print("Erro: O título e o autor são obrigatórios.")
             return
 
-        if tipo == "fisico":
-            livro = self.livro_manager.adicionar_livro(
-                tipo="fisico",
-                titulo=titulo,
-                autor=autor,
-                localizacao=extra if extra else "Desconhecido",
-                link=link if link else "#"
-            )
-        else:
-            try:
-                tamanho = float(extra) if extra else 0.0
-            except ValueError:
-                messagebox.showerror("Erro", "O tamanho do livro digital deve ser um número válido!")
-                return
-
-            livro = self.livro_manager.adicionar_livro(
-                tipo="digital",
-                titulo=titulo,
-                autor=autor,
-                formato="PDF",
-                tamanho=tamanho,
-                link=link if link else "#"
-            )
+        livro = self.livro_manager.adicionar_livro(
+            titulo=titulo,
+            autor=autor,
+            tipo=tipo,
+            localizacao=localizacao if tipo == "fisico" else "",
+            link=link if link else "#"
+        )
 
         if livro:
-            messagebox.showinfo("Sucesso", f'Livro "{titulo}" adicionado com sucesso!')
-            self.livro_list.atualizar_lista()  # Atualiza a lista após adicionar
-        else:
-            messagebox.showerror("Erro", "Não foi possível adicionar o livro.")
+            self.livro_list.atualizar_lista()
+            self.limpar_campos()
+
+    def limpar_campos(self):
+        """
+        Limpa os campos do formulário após adicionar um livro.
+        """
+        self.titulo_entry.delete(0, tk.END)
+        self.autor_entry.delete(0, tk.END)
+        self.localizacao_entry.delete(0, tk.END)
+        self.link_entry.delete(0, tk.END)
+        self.tipo_var.set("fisico")
+
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.title("Sistema de Gerenciamento de Livraria")
+    app = LivroForm(root, None, None)
+    root.mainloop()
