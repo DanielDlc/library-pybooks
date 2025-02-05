@@ -1,6 +1,6 @@
-from src.livraria import Livraria
-from src.livro_digital import LivroDigital
-from src.livro_fisico import LivroFisico
+from src.models.livraria import Livraria
+from src.models.livro_digital import LivroDigital
+from src.models.livro_fisico import LivroFisico
 
 
 def test_adicionar_livro():
@@ -63,5 +63,3 @@ def test_salvar_e_carregar_livros():
 
     assert len(nova_livraria.livros) == 1
     assert nova_livraria.livros[0].titulo == "Effective Python"
-
-
