@@ -36,7 +36,6 @@ class LivroManager:
                             autor=item.get("autor", "Autor Desconhecido"),
                             formato=item.get("formato", "PDF"),
                             tamanho=item.get("tamanho", 0.0),
-                            imagem=item.get("imagem", "img/digitais/default.jpg"),
                             link=item.get("link", "#")
                         )
                     else:
@@ -44,7 +43,8 @@ class LivroManager:
                             titulo=item.get("titulo", "Título Desconhecido"),
                             autor=item.get("autor", "Autor Desconhecido"),
                             localizacao=item.get("localizacao", "Desconhecido"),
-                            diretorio_imagem=item.get("imagem", "img/fisicos/default.jpg")
+                            condicao=item.get("condicao", "Novo"),
+                            link=item.get("link", "#")
                         )
                     
                     self.livraria.adicionar_livro(livro)
@@ -73,7 +73,8 @@ class LivroManager:
                 titulo=kwargs.get("titulo", "Título Desconhecido"),
                 autor=kwargs.get("autor", "Autor Desconhecido"),
                 localizacao=kwargs.get("localizacao", "Desconhecido"),
-                diretorio_imagem=kwargs.get("imagem", "img/fisicos/default.jpg")
+                condicao=kwargs.get("condicao", "Novo"),
+                link=kwargs.get("link", "#")
             )
         elif tipo == "digital":
             livro = LivroDigital(
@@ -81,7 +82,6 @@ class LivroManager:
                 autor=kwargs.get("autor", "Autor Desconhecido"),
                 formato=kwargs.get("formato", "PDF"),
                 tamanho=kwargs.get("tamanho", 0.0),
-                imagem=kwargs.get("imagem", "img/digitais/default.jpg"),
                 link=kwargs.get("link", "#")
             )
         else:
