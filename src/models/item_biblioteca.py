@@ -25,8 +25,20 @@ class ItemBiblioteca:
         :return: True se forem iguais, False caso contrário.
         """
         if isinstance(other, ItemBiblioteca):
-            return self.titulo.lower() == other.titulo.lower() and self.autor.lower() == other.autor.lower()
+            return (
+                self.titulo.lower() == other.titulo.lower()
+                and self.autor.lower() == other.autor.lower()
+            )
         return False
+
+    def __hash__(self):
+        """
+        Define um hash para permitir que objetos ItemBiblioteca sejam usados
+        em conjuntos (set) e como chaves em dicionários.
+
+        :return: O hash baseado no título e autor do livro.
+        """
+        return hash((self.titulo.lower(), self.autor.lower()))
 
     def __str__(self):
         """
@@ -42,7 +54,10 @@ class ItemBiblioteca:
 
         :return: Uma string detalhada do item da biblioteca.
         """
-        return f"ItemBiblioteca(titulo='{self.titulo}', autor='{self.autor}', link='{self.link}')"
+        return (
+            f"ItemBiblioteca(titulo='{self.titulo}', "
+            f"autor='{self.autor}', link='{self.link}')"
+        )
 
     def __add__(self, other):
         """
@@ -55,7 +70,9 @@ class ItemBiblioteca:
             novo_titulo = f"{self.titulo} & {other.titulo}"
             novo_autor = f"{self.autor} e {other.autor}"
             return ItemBiblioteca(novo_titulo, novo_autor)
-        raise TypeError("Só é possível somar objetos do tipo ItemBiblioteca.")
+        raise TypeError(
+            "Só é possível somar objetos do tipo ItemBiblioteca."
+        )
 
     def __lt__(self, other):
         """
@@ -66,7 +83,10 @@ class ItemBiblioteca:
         """
         if isinstance(other, ItemBiblioteca):
             return self.titulo.lower() < other.titulo.lower()
-        raise TypeError("A comparação só pode ser feita entre objetos do tipo ItemBiblioteca.")
+        raise TypeError(
+            "A comparação só pode ser feita entre objetos do tipo "
+            "ItemBiblioteca."
+        )
 
     def __len__(self):
         """
