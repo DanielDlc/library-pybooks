@@ -20,11 +20,11 @@ class Interface:
         self.container = tk.Frame(self.janela)
         self.container.pack(padx=20, pady=20)
 
-        # Criar o formulário de cadastro de livros
-        self.livro_form = LivroForm(self.container, self.livro_manager)
-
         # Criar a lista de livros
         self.livro_list = LivroList(self.container, self.livro_manager)
+
+        # Criar o formulário de cadastro de livros (agora passando `livro_list`)
+        self.livro_form = LivroForm(self.container, self.livro_manager, self.livro_list)
 
         # Atualizar a lista de livros no início
         self.livro_list.atualizar_lista()
