@@ -1,4 +1,4 @@
-from src.livro_digital import LivroDigital
+from src.models.livro_digital import LivroDigital
 
 
 def test_criar_livro_digital():
