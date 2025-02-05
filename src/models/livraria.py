@@ -1,7 +1,8 @@
 """Módulo que gerencia a coleção de livros na livraria."""
 
-from src.models.livro_fisico import LivroFisico
 from src.models.livro_digital import LivroDigital
+from src.models.livro_fisico import LivroFisico
+
 
 class Livraria:
     """Gerencia os livros da biblioteca (sem persistência)."""
