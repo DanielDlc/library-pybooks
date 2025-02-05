@@ -2,7 +2,7 @@
     {
         "titulo": "Python fluente",
         "autor": "Luciano Ramalho",
-        "link": "https://www.amazon.com.br/Python-Fluente-Programa%C3%A7%C3%A3o-Concisa-Eficaz/dp/857522462X",
+        "link": "https://pythonfluente.com/#_pref%C3%A1cio",
         "localizacao": "Estante Sala",
         "condicao": "Novo",
         "tipo": "Físico"
@@ -22,5 +22,13 @@
         "formato": "PDF",
         "tamanho": 19.0,
         "tipo": "Digital"
+    },
+    {
+        "titulo": "Automatize Tarefas Maçantes com Python",
+        "autor": "Al Swigart",
+        "link": "https://github.com/DanielDlc/books/blob/main/books/Livro%20de%20Python%20(Automatize%20tarefas%20ma%C3%A7antes).pdf",
+        "localizacao": "Sala",
+        "condicao": "Novo",
+        "tipo": "Físico"
     }
 ]
