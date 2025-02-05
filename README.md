@@ -8,7 +8,7 @@ Este projeto é um **CRUD completo** para gerenciamento de uma biblioteca pessoa
 - ✅ Listar apenas **livros digitais**  
 - ✅ Modificar informações de um livro  
 - ✅ Deletar ou marcar um livro como vendido  
-- ✅ **Adicionar imagens e links para compra** dos livros  
+- ✅ **Adicionar links para compra** dos livros  
 - ✅ Persistência automática dos dados em JSON  
 
 ---
@@ -89,7 +89,7 @@ venv\Scripts\activate  # Windows
 
 2️⃣ **Rodar o programa**  
 ```bash
-python src/main.py
+python main.py
 ```
 
 3️⃣ **Interagir pela interface gráfica** e gerenciar os livros da sua biblioteca!
