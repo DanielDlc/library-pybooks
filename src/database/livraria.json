@@ -8,14 +8,6 @@
         "tipo": "Físico"
     },
     {
-        "titulo": "Entendendo Algoritmos",
-        "autor": "Aditya Y. Bhargava",
-        "link": "https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/Entendendo%20Algoritmos%20-%20Um%20Guia%20Ilustrado%20Para%20Programadores%20e%20Outros%20Curiosos%20-%20Autor%20(Aditya%20Y.%20Bhargava).pdf",
-        "formato": "PDF",
-        "tamanho": 19.0,
-        "tipo": "Digital"
-    },
-    {
         "titulo": "Automatize Tarefas Maçantes com Python",
         "autor": "Al Swigart",
         "link": "https://github.com/DanielDlc/books/blob/main/books/Livro%20de%20Python%20(Automatize%20tarefas%20ma%C3%A7antes).pdf",
@@ -43,6 +35,22 @@
         "titulo": "Python para desenvolvedores",
         "autor": "Luiz Eduardo Borges",
         "link": "https://github.com/DanielDlc/books/blob/main/books/Luiz%20Eduardo%20Borges%20-%20Python%20para%20Desenvolvedores%20-%202%C2%B0%20Edi%C3%A7%C3%A3o.pdf",
+        "localizacao": "Github",
+        "condicao": "Novo",
+        "tipo": "Físico"
+    },
+    {
+        "titulo": "Curso Intensivo de Python",
+        "autor": "Eric Matthes",
+        "link": "https://github.com/DanielDlc/books/blob/main/books/Livro%20de%20Python.pdf",
+        "formato": "PDF",
+        "tamanho": 20.0,
+        "tipo": "Digital"
+    },
+    {
+        "titulo": "Entendendo Algoritmos",
+        "autor": "Aditya Y. Bhargava",
+        "link": "https://github.com/DanielDlc/books/blob/main/books/Entendendo%20Algoritmos%20-%20Um%20Guia%20Ilustrado%20Para%20Programadores%20e%20Outros%20Curiosos%20-%20Autor%20(Aditya%20Y.%20Bhargava).pdf",
         "localizacao": "Github",
         "condicao": "Novo",
         "tipo": "Físico"
