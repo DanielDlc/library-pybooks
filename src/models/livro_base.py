@@ -1,43 +1,72 @@
-"""Módulo que define a classe base LivroComImagem."""
+"""Módulo que define a classe Livro."""
 
-import os
-from typing import Optional
-from src.models.livro import Livro
 
-class LivroComImagem(Livro):
-    """Classe base para livros que possuem imagens associadas."""
+class Livro:
+    """Classe base para representar um livro."""
 
-    def __init__(self, titulo: str, autor: str, diretorio_imagem: str, imagem: Optional[str] = None, **kwargs) -> None:
+    def __init__(self, titulo: str, autor: str, link: str = "#") -> None:
         """
-        Inicializa um livro com imagem.
+        Inicializa um livro.
 
         :param titulo: O título do livro.
         :param autor: O autor do livro.
-        :param diretorio_imagem: Diretório onde a imagem está armazenada.
-        :param imagem: Nome ou caminho da imagem (opcional).
-        :param kwargs: Argumentos adicionais.
+        :param link: URL para referência ou compra (opcional, padrão "#").
         """
-        super().__init__(titulo, autor, **kwargs)
-        self.imagem = self._obter_caminho_imagem(diretorio_imagem, imagem)
+        self.titulo = titulo
+        self.autor = autor
+        self.link = link  # URL para compra ou mais informações
 
-    def _obter_caminho_imagem(self, diretorio: str, imagem_nome: Optional[str]) -> Optional[str]:
+    def exibir_detalhes(self) -> str:
+        """Retorna uma string formatada com os detalhes do livro."""
+        detalhes = f"Título: {self.titulo}\nAutor: {self.autor}"
+        if self.link and self.link != "#":
+            detalhes += f"\n🔗 Link: {self.link}"
+        return detalhes
+
+
+class LivroFisico(Livro):
+    """Representa um livro físico com localização."""
+
+    def __init__(
+            self,
+            titulo: str,
+            autor: str,
+            localizacao: str,
+            link: str = "#"
+            ) -> None:
         """
-        Verifica se a imagem existe e retorna o caminho correto.
+        Inicializa um livro físico.
 
-        :param diretorio: Diretório onde a imagem deve estar.
-        :param imagem_nome: Nome do arquivo da imagem.
-        :return: Caminho correto da imagem, ou None se não for encontrada.
+        :param titulo: O título do livro.
+        :param autor: O autor do livro.
+        :param localizacao: Localização do livro na estante.
+        :param link: URL para referência (opcional, padrão "#").
         """
-        imagem_padrao = os.path.join(diretorio, "default.jpg")
+        super().__init__(titulo, autor, link)
+        self.localizacao = localizacao
 
-        if not imagem_nome:
-            return imagem_padrao  # Se nenhuma imagem for fornecida, usa uma padrão
+    def exibir_detalhes(self) -> str:
+        """Retorna uma string formatada com os detalhes do livro físico."""
+        detalhes = super().exibir_detalhes()
+        detalhes += f"\n📍 Localização: {self.localizacao}"
+        return detalhes
 
-        # Se o caminho já for absoluto, verifica se o arquivo existe
-        if os.path.isabs(imagem_nome):
-            return imagem_nome if os.path.exists(imagem_nome) else imagem_padrao
 
-        # Constrói o caminho baseado no diretório fornecido
-        caminho_imagem = os.path.join(diretorio, imagem_nome)
+class LivroDigital(Livro):
+    """Representa um livro digital com um link de acesso."""
 
-        return caminho_imagem if os.path.exists(caminho_imagem) else imagem_padrao
+    def __init__(self, titulo: str, autor: str, link: str) -> None:
+        """
+        Inicializa um livro digital.
+
+        :param titulo: O título do livro.
+        :param autor: O autor do livro.
+        :param link: URL para acessar ou baixar o livro.
+        """
+        super().__init__(titulo, autor, link)
+
+    def exibir_detalhes(self) -> str:
+        """Retorna uma string formatada com os detalhes do livro digital."""
+        detalhes = super().exibir_detalhes()
+        detalhes += "\n💻 Formato: Digital"
+        return detalhes
