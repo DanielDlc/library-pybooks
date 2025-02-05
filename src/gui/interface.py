@@ -1,9 +1,11 @@
 """Interface principal da aplicação."""
 
 import tkinter as tk
+
 from src.gui.livro_form import LivroForm
 from src.gui.livro_list import LivroList
 from src.managers.livro_manager import LivroManager
+
 
 class Interface:
     """Janela principal do sistema de gerenciamento de livros."""
@@ -21,10 +23,15 @@ class Interface:
         self.container.pack(padx=20, pady=20)
 
         # Criar a lista de livros
-        self.livro_list = LivroList(self.container, self.livro_manager)
+        self.livro_list = LivroList(self.container,
+                                    self.livro_manager
+                                    )
 
-        # Criar o formulário de cadastro de livros (agora passando `livro_list`)
-        self.livro_form = LivroForm(self.container, self.livro_manager, self.livro_list)
+        # Criar o formulário de cadastro de livros
+        self.livro_form = LivroForm(self.container,
+                                    self.livro_manager,
+                                    self.livro_list
+                                    )
 
         # Atualizar a lista de livros no início
         self.livro_list.atualizar_lista()
