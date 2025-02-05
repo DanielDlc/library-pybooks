@@ -1,22 +1,26 @@
 [
     {
-        "localizacao": "Sala",
-        "condicao": "Novo",
         "titulo": "Python fluente",
         "autor": "Luciano Ramalho",
-        "genero": null,
-        "ano": null,
-        "imagem": "img/default.jpg",
-        "link": null
+        "link": "https://www.amazon.com.br/Python-Fluente-Programa%C3%A7%C3%A3o-Concisa-Eficaz/dp/857522462X",
+        "localizacao": "Estante Sala",
+        "condicao": "Novo",
+        "tipo": "Físico"
     },
     {
         "titulo": "Web Scraping",
-        "autor": "Ryan Mitchell (Author)",
-        "genero": null,
-        "ano": null,
-        "imagem": "img/default.jpg",
+        "autor": "Ryan Mitchell",
         "link": "https://www.amazon.com/-/es/Web-Scraping-Python-Extraction-Modern-dp-1098145356/dp/1098145356",
         "formato": "PDF",
-        "tamanho": 22.0
+        "tamanho": 21.0,
+        "tipo": "Digital"
+    },
+    {
+        "titulo": "Entendendo Algoritmos",
+        "autor": "Aditya Y. Bhargava",
+        "link": "https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/Entendendo%20Algoritmos%20-%20Um%20Guia%20Ilustrado%20Para%20Programadores%20e%20Outros%20Curiosos%20-%20Autor%20(Aditya%20Y.%20Bhargava).pdf",
+        "formato": "PDF",
+        "tamanho": 19.0,
+        "tipo": "Digital"
     }
 ]
