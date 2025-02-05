@@ -1,52 +1,45 @@
-"""Módulo que define a classe base ItemBiblioteca e suas subclasses."""
-
 class ItemBiblioteca:
-    """Classe base para representar um item da biblioteca."""
+    """
+    Classe base para representar um item da biblioteca.
+    """
 
-    def __init__(self, titulo: str, autor: str, link: str = "#") -> None:
+    def __init__(self, titulo: str, autor: str, link: str = "#"):
         """
         Inicializa um item da biblioteca.
 
-        :param titulo: O título do item.
-        :param autor: O autor do item.
-        :param link: Link opcional para informações sobre o livro.
+        :param titulo: O título do livro.
+        :param autor: O nome do autor do livro.
+        :param link: O link para acessar informações sobre o livro (opcional).
         """
         self.titulo = titulo
         self.autor = autor
-        self.link = link  # Adicionado para corrigir o erro
+        self.link = link
 
-
-class LivroFisico(ItemBiblioteca):
-    """Representa um livro físico na biblioteca."""
-
-    def __init__(self, titulo: str, autor: str, localizacao: str, condicao: str, link: str = "#") -> None:
+    def __eq__(self, other):
         """
-        Inicializa um livro físico.
+        Compara dois livros para verificar se são iguais.
 
-        :param titulo: O título do livro.
-        :param autor: O autor do livro.
-        :param localizacao: Localização onde o livro está armazenado.
-        :param condicao: Condição física do livro (novo, usado, etc.).
-        :param link: Link opcional para informações sobre o livro.
+        Dois livros são considerados iguais se possuem o mesmo título e autor.
+
+        :param other: Outro objeto a ser comparado.
+        :return: True se forem iguais, False caso contrário.
         """
-        super().__init__(titulo, autor, link)  # Agora aceita link corretamente
-        self.localizacao = localizacao
-        self.condicao = condicao
+        if isinstance(other, ItemBiblioteca):
+            return self.titulo.lower() == other.titulo.lower() and self.autor.lower() == other.autor.lower()
+        return False
 
-
-class LivroDigital(ItemBiblioteca):
-    """Representa um livro digital na biblioteca."""
-
-    def __init__(self, titulo: str, autor: str, formato: str, tamanho: float, link: str = "#") -> None:
+    def __str__(self):
         """
-        Inicializa um livro digital.
+        Retorna uma representação em string do objeto.
 
-        :param titulo: O título do livro.
-        :param autor: O autor do livro.
-        :param formato: O formato do livro digital (PDF, EPUB, etc.).
-        :param tamanho: O tamanho do arquivo em MB.
-        :param link: Link para acesso ao livro digital.
+        :return: Uma string representando o item da biblioteca.
         """
-        super().__init__(titulo, autor, link)  # Agora aceita link corretamente
-        self.formato = formato
-        self.tamanho = tamanho
+        return f"{self.titulo} - {self.autor} ({self.__class__.__name__})"
+
+    def __repr__(self):
+        """
+        Retorna uma representação detalhada do objeto para depuração.
+
+        :return: Uma string detalhada do item da biblioteca.
+        """
+        return f"ItemBiblioteca(titulo='{self.titulo}', autor='{self.autor}', link='{self.link}')"
