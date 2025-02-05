@@ -43,3 +43,35 @@ class ItemBiblioteca:
         :return: Uma string detalhada do item da biblioteca.
         """
         return f"ItemBiblioteca(titulo='{self.titulo}', autor='{self.autor}', link='{self.link}')"
+
+    def __add__(self, other):
+        """
+        Combina dois livros em um único.
+
+        :param other: Outro livro da biblioteca.
+        :return: Um novo ItemBiblioteca com título e autor combinados.
+        """
+        if isinstance(other, ItemBiblioteca):
+            novo_titulo = f"{self.titulo} & {other.titulo}"
+            novo_autor = f"{self.autor} e {other.autor}"
+            return ItemBiblioteca(novo_titulo, novo_autor)
+        raise TypeError("Só é possível somar objetos do tipo ItemBiblioteca.")
+
+    def __lt__(self, other):
+        """
+        Define a comparação de livros com base no título.
+
+        :param other: Outro livro da biblioteca.
+        :return: True se o título do livro atual for menor (alfabeticamente).
+        """
+        if isinstance(other, ItemBiblioteca):
+            return self.titulo.lower() < other.titulo.lower()
+        raise TypeError("A comparação só pode ser feita entre objetos do tipo ItemBiblioteca.")
+
+    def __len__(self):
+        """
+        Retorna o tamanho do título do livro.
+
+        :return: Número de caracteres no título do livro.
+        """
+        return len(self.titulo)
