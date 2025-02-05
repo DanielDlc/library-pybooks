@@ -2,10 +2,18 @@
 
 from src.models.item_biblioteca import ItemBiblioteca
 
+
 class LivroFisico(ItemBiblioteca):
     """Representa um livro físico na biblioteca."""
 
-    def __init__(self, titulo: str, autor: str, localizacao: str, condicao: str = "Novo", link: str = "Sem link") -> None:
+    def __init__(
+            self,
+            titulo: str,
+            autor: str,
+            localizacao: str,
+            condicao: str = "Novo",
+            link: str = "Sem link"
+            ) -> None:
         """
         Inicializa um livro físico.
 
