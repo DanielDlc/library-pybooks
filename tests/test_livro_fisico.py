@@ -1,4 +1,4 @@
-from src.livro_fisico import LivroFisico
+from src.models.livro_fisico import LivroFisico
 
 
 def test_criar_livro_fisico():
