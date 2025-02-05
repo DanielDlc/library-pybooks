@@ -8,14 +8,6 @@
         "tipo": "Físico"
     },
     {
-        "titulo": "Web Scraping",
-        "autor": "Ryan Mitchell",
-        "link": "https://www.amazon.com/-/es/Web-Scraping-Python-Extraction-Modern-dp-1098145356/dp/1098145356",
-        "formato": "PDF",
-        "tamanho": 21.0,
-        "tipo": "Digital"
-    },
-    {
         "titulo": "Entendendo Algoritmos",
         "autor": "Aditya Y. Bhargava",
         "link": "https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/Entendendo%20Algoritmos%20-%20Um%20Guia%20Ilustrado%20Para%20Programadores%20e%20Outros%20Curiosos%20-%20Autor%20(Aditya%20Y.%20Bhargava).pdf",
@@ -30,5 +22,21 @@
         "localizacao": "Sala",
         "condicao": "Novo",
         "tipo": "Físico"
+    },
+    {
+        "titulo": "Python Cookbook",
+        "autor": "David Beazley",
+        "link": "https://www.amazon.com.br/Python-Cookbook-David-Beazley/dp/1449340377?crid=2WI3IJTTROUZL&dib=eyJ2IjoiMSJ9.c7fPh6qre1ax9Mnz4NNOMFnjdahn2I1K9cfQgcIeYGfpaX60zJhAzP2qpmlLqAWeempPsLJgsdt-FrcboDu-n_Y3pdGXup7d8oJaewOWA6ZYv9amSSlF4oBXchNyYaAZ_h6dACsyY95731EQQCYzn-6U8Cn9D-6tquViG2HZwBJAuABIlIwomBs-ItXWqQSlA5LiS6mU-BZL4FOBDKiGHgKS0MHWvq4NyylIJYq8jMeLHkNKNIcxPAHMQ3b3q98IacMTdBTiOSQQs9h_KEvsJcl2NyrzPguH28lwLVZQHRxHLnSQ7pR4cmhrVoFDQirThfKQatteem897EMcqOI6XoKVMuBRwwku3PTk6aLDwO6BAEUS-TYyFAz3U7cTnpYPnYDWtPvBR_7LzPLeYQ2blDIJJIYFkyPNa4HjtbLkULTPgZ2cWbK-D1T06hV660PK.GjyJ5cfeLhMRetNVIAv5mQ9PJos5bAsuKSjaWijN_JU&dib_tag=se&keywords=python+cookbook&qid=1738752263&sprefix=python+cook%2Caps%2C253&sr=8-1&ufe=app_do%3Aamzn1.fos.db68964d-7c0e-4bb2-a95c-e5cb9e32eb12",
+        "localizacao": "Trabalho",
+        "condicao": "Novo",
+        "tipo": "Físico"
+    },
+    {
+        "titulo": "Pense em Python",
+        "autor": "Allen B. Downey",
+        "link": "https://penseallen.github.io/PensePython2e/",
+        "formato": "PDF",
+        "tamanho": 0.0,
+        "tipo": "Digital"
     }
 ]
