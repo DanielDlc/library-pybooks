@@ -1,13 +1,15 @@
-# Dependências essenciais
+argcomplete==3.5.3
+click==8.1.8
+coverage==7.6.10
+iniconfig==2.0.0
+packaging==24.2
+pillow==11.1.0
+pipx==1.7.1
+platformdirs==4.3.6
+pluggy==1.5.0
 pytest==8.3.4
 pytest-cov==6.0.0
 ruff==0.9.4
-
-# Utilitários de testes e cobertura de código
-iniconfig==2.0.0
-pluggy==1.5.0
-coverage==7.6.10
-packaging==24.2
-
-# Formatação e linting
-wheel==0.45.1
+tkinterweb==3.25.11
+userpath==1.9.2
+wheel @ file:///opt/homebrew/Cellar/python%403.13/3.13.1/libexec/wheel-0.45.1-py3-none-any.whl#sha256=da46333d5dcbde6e20cf7e2f8fff9e9ce76e8c94dc4afd6fb95fc4bc2745fb5e
