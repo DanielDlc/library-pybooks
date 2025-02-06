@@ -1,65 +1,60 @@
-from src.models.livraria import Livraria
+"""Módulo que gerencia a coleção de livros na livraria."""
+
+import json
+
 from src.models.livro_digital import LivroDigital
 from src.models.livro_fisico import LivroFisico
 
 
-def test_adicionar_livro():
-    """Testa a adição de um livro físico na livraria."""
-    livraria = Livraria()
-    livro = LivroFisico("Python Fluente",
-                        "Luciano Ramalho",
-                        localizacao="Estante A"
-                        )
+class Livraria:
+    """Gerencia os livros da biblioteca (com persistência)."""
 
-    resultado = livraria.adicionar_livro(livro)
-    assert resultado == "Livro adicionado com sucesso."
-    assert len(livraria.livros) == 1
+    def __init__(self) -> None:
+        """Inicializa a livraria como uma coleção vazia."""
+        self.livros: list[LivroFisico | LivroDigital] = []
 
+    def adicionar_livro(self, livro) -> str:
+        """Adiciona um livro à coleção."""
+        if not isinstance(livro, (LivroFisico, LivroDigital)):
+            return "Erro: O objeto adicionado não é um livro válido."
 
-def test_nao_adicionar_livro_duplicado():
-    """Testa a tentativa de adicionar um livro duplicado na livraria."""
-    livraria = Livraria()
-    livro = LivroFisico("Python Fluente",
-                        "Luciano Ramalho",
-                        localizacao="Estante A"
-                        )
+        for livro_existente in self.livros:
+            if (
+                livro_existente.titulo == livro.titulo
+                and livro_existente.autor == livro.autor
+                and isinstance(livro_existente, livro.__class__)
+            ):
+                return f'Livro "{livro.titulo}" já cadastrado!'
 
-    livraria.adicionar_livro(livro)
-    resultado = livraria.adicionar_livro(livro)  # adicionando o mesmo livro
+        self.livros.append(livro)
+        return f'Livro "{livro.titulo}" adicionado com sucesso!'
 
-    assert resultado == "Livro já cadastrado."
-    assert len(livraria.livros) == 1  # deve ter apenas 1 livro na coleção
+    def listar_livros(self) -> str:
+        """Retorna a lista de livros ou informa não ter livros cadastrados."""
+        if not self.livros:
+            return "Nenhum livro cadastrado."
 
+        return "\n".join(
+            f"{livro.titulo} - {livro.autor}"
+            for livro in self.livros
+        )
 
-def test_listar_livros():
-    """Testa a listagem de livros na livraria."""
-    livraria = Livraria()
+    def salvar_dados(self, arquivo: str = "livraria.json") -> None:
+        """Salva os livros no formato JSON."""
+        with open(arquivo, "w", encoding="utf-8") as f:
+            json.dump([livro.__dict__ for livro in self.livros], f, indent=4)
 
-    assert livraria.listar_livros() == "Nenhum livro cadastrado."
+    def carregar_dados(self, arquivo: str = "livraria.json") -> None:
+        """Carrega os livros a partir de um arquivo JSON."""
+        try:
+            with open(arquivo, "r", encoding="utf-8") as f:
+                livros = json.load(f)
 
-    livro = LivroDigital("Automate the Boring Stuff with Python",
-                         "Al Sweigart",
-                         formato="PDF",
-                         tamanho=8.5
-                         )
-    livraria.adicionar_livro(livro)
-
-    assert "Automate the Boring Stuff with Python" in livraria.listar_livros()
-
-
-def test_salvar_e_carregar_livros():
-    """Testa a persistência de livros no JSON."""
-    livraria = Livraria()
-    livro = LivroFisico("Effective Python",
-                        "Brett Slatkin",
-                        localizacao="Escritório"
-                        )
-
-    livraria.adicionar_livro(livro)
-    livraria.salvar_dados("test_livraria.json")
-
-    nova_livraria = Livraria()
-    nova_livraria.carregar_dados("test_livraria.json")
-
-    assert len(nova_livraria.livros) == 1
-    assert nova_livraria.livros[0].titulo == "Effective Python"
+            self.livros = [
+                LivroFisico(**livro)
+                if "localizacao" in livro
+                else LivroDigital(**livro)
+                for livro in livros
+            ]
+        except FileNotFoundError:
+            self.livros = []
