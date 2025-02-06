@@ -18,11 +18,11 @@ def mock_livro_manager():
 
 @pytest.fixture
 def livro_list(mock_livro_manager):
-    """Cria uma instância do LivroList com mock."""
+    """Cria uma instância do LivroList com mock sem destruir root prematuramente."""
     root = tk.Tk()
     lista = LivroList(root, mock_livro_manager)
-    root.destroy()  # Evita abrir a janela do Tkinter nos testes
-    return lista
+    yield lista  # Usa yield para manter a instância viva durante o teste
+    root.destroy()  # Destrói após o teste
 
 
 def test_adicionar_livro_fisico(livro_list, mock_livro_manager):
