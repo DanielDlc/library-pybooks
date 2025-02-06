@@ -1,44 +1,93 @@
-from src.models.livro import Livro
+"""Testes para a lista de livros na interface (livro_list.py)"""
+
+import tkinter as tk
+from unittest.mock import MagicMock
+
+import pytest
+
+from src.gui.livro_list import LivroList
 from src.models.livro_digital import LivroDigital
-
-# 🔹 Definir constantes para valores mágicos
-TAMANHO_ESPERADO = 8.7
+from src.models.livro_fisico import LivroFisico
 
 
-def test_comparar_livros():
-    """Testa se dois livros com o mesmo título e autor
-    são considerados iguais.
-    """
-    livro1 = Livro("Python Fluente", "Luciano Ramalho")
-    livro2 = Livro("Python Fluente", "Luciano Ramalho")
-    livro3 = Livro("Clean Code", "Robert C. Martin")
-
-    # 🔹 Uso das variáveis nos asserts
-    assert livro1 == livro2  # Livros iguais
-    assert livro1 != livro3  # Livros diferentes
+@pytest.fixture
+def mock_livro_manager():
+    """Mock do gerenciador de livros."""
+    return MagicMock()
 
 
-def test_somar_livros_digitais():
-    """Testa a sobrecarga de operador para
-    somar tamanhos de livros digitais.
-    """
-    livro1 = LivroDigital(
+@pytest.fixture
+def livro_list(mock_livro_manager):
+    """Cria uma instância do LivroList com mock."""
+    root = tk.Tk()
+    lista = LivroList(root, mock_livro_manager)
+    root.destroy()  # Evita abrir a janela do Tkinter nos testes
+    return lista
+
+
+def test_adicionar_livro_fisico(livro_list, mock_livro_manager):
+    """Testa se um livro físico aparece na interface após ser adicionado."""
+    livro = LivroFisico(
+        "Python Fluente",
+        "Luciano Ramalho",
+        localizacao="Estante A"
+    )
+    mock_livro_manager.listar_livros.return_value = [livro]
+
+    livro_list.atualizar_lista()
+
+    assert livro_list.lista_livros.size() == 1
+    assert (
+        livro_list.lista_livros.get(0)
+        == "Python Fluente - Luciano Ramalho (📖 Físico)"
+    )
+
+
+def test_adicionar_livro_digital(livro_list, mock_livro_manager):
+    """Testa se um livro digital aparece na interface após ser adicionado."""
+    livro = LivroDigital(
         "Automate the Boring Stuff",
         "Al Sweigart",
-        tamanho=5.5
+        formato="PDF",
+        tamanho=10.0
     )
-    livro2 = LivroDigital(
-        "Python Crash Course",
-        "Eric Matthes",
-        tamanho=3.2
+    mock_livro_manager.listar_livros.return_value = [livro]
+
+    livro_list.atualizar_lista()
+
+    assert livro_list.lista_livros.size() == 1
+    assert (
+        livro_list.lista_livros.get(0)
+        == "Automate the Boring Stuff - Al Sweigart (💻 Digital)"
     )
 
-    # 🔹 Criando um novo livro com a soma dos tamanhos
-    resultado = livro1 + livro2
 
-    # 🔹 Quebrando linha longa para legibilidade
-    assert resultado.titulo == (
-        "Automate the Boring Stuff + Python Crash Course"
+def test_atualizar_lista(livro_list, mock_livro_manager):
+    """Testa a atualização da lista de livros na interface."""
+    livros = [
+        LivroFisico(
+            "Python Fluente",
+            "Luciano Ramalho",
+            localizacao="Estante A"
+        ),
+        LivroDigital(
+            "Automate the Boring Stuff",
+            "Al Sweigart",
+            formato="PDF",
+            tamanho=10.0
+        ),
+    ]
+    mock_livro_manager.listar_livros.return_value = livros
+
+    livro_list.atualizar_lista()
+
+    TOTAL_LIVROS = len(livros)  # Substitui valor mágico
+    assert livro_list.lista_livros.size() == TOTAL_LIVROS
+    assert (
+        livro_list.lista_livros.get(0)
+        == "Python Fluente - Luciano Ramalho (📖 Físico)"
     )
-    assert resultado.autor == "Múltiplos Autores"
-    assert resultado.tamanho == TAMANHO_ESPERADO  # Usando constante
+    assert (
+        livro_list.lista_livros.get(1)
+        == "Automate the Boring Stuff - Al Sweigart (💻 Digital)"
+    )
