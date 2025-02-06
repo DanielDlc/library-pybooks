@@ -101,14 +101,6 @@ Os livros cadastrados são armazenados automaticamente no arquivo **`livraria.js
 
 ---
 
-## 🚀 **Melhorias Futuras**
-- 🎨 Melhorias na interface gráfica (melhor organização dos botões e layout)  
-- 📸 Suporte para **upload de imagens locais** (não apenas links)  
-- 📚 Integração com APIs externas para buscar dados automaticamente  
-- 📝 Documentação com **MkDocs**  
-
----
-
 ## 💻 **Contribuições**
 Sinta-se à vontade para contribuir com o projeto! Para isso:  
 
