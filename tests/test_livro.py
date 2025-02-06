@@ -18,7 +18,7 @@ def mock_livro_manager():
 
 @pytest.fixture
 def livro_list(mock_livro_manager):
-    """Cria uma instância do LivroList com mock sem destruir root prematuramente."""
+    """Cria uma instância do LivroList mock sem apagar root prematuramente."""
     root = tk.Tk()
     lista = LivroList(root, mock_livro_manager)
     yield lista  # Usa yield para manter a instância viva durante o teste
